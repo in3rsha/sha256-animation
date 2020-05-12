@@ -2,6 +2,8 @@
 
 An animation of the [SHA-256](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf) hash function in your terminal.
 
+I used this code to help me make a video to explain [how SHA-256 works](https://www.youtube.com/watch?v=f9EbD6iY9zI).
+
 ![](images/sha256.gif)
 
 ## Usage
@@ -323,6 +325,11 @@ The final hash value is just the _concatenation_ of these eight 32-bit values to
 * I decided not to include the individual animations for [`expansion.rb`](expansion.rb), [`t1.rb`](t1.rb), [`t2.rb`](t2.rb) in the main [`sha256.rb`](sha256.rb) animation. This is to help speed up the flow of the animation.
 * In terms of security; I believe the **Sigma** functions help with the _diffusion of bits_, and the **Choice** and **Majority** functions give the hash function it's _one-wayness_ due to being _nonlinear_. The **addition modulus 2<sup>32</sup>** is also _nonlinear_.<sup>[1](#security)</sup>
 
+
+## Testimonials
+
+> that's dope - [esky33](https://twitter.com/Esky33junglist/status/1259789790943285248?s=20)
+<br>
 
 ## Links
 
