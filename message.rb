@@ -40,7 +40,7 @@ puts "-------"
 puts "message:"
 puts "-------"
 puts "input:   #{$input} (#{$type})"
-puts "bytes:   #{$bytes.inspect}"
+puts "bytes:   #{$bytes.inspect}" if defined? $bytes
 delay(:normal)
 
 system "clear"
@@ -48,7 +48,7 @@ puts "-------"
 puts "message:"
 puts "-------"
 puts "input:   #{$input} (#{$type})"
-puts "bytes:   #{$bytes.inspect}"
+puts "bytes:   #{$bytes.inspect}" if defined? $bytes
 puts "message: #{$message}"
 delay(:end)
 

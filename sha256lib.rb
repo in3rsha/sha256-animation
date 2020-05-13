@@ -68,40 +68,39 @@ def input_type(input)
   # Check for hex or binary prefix
   case input[0..1]
   when "0b"
+    # check it's a valid binary string
+    if input[2..-1] =~ /[^0-1]/ # only 1s and 0s
+      puts "Invalid binary string: #{input}"
+      exit
+    end
     return "binary"
   when "0x"
+    # check it's a valid hex string
+    if input[2..-1] !~ /^[0-9A-F]+$/i # only hex chars (case-insensitive)
+      puts "Invalid hex string: #{input}"
+      exit
+    end
     return "hex"
   else
     return "string"
   end
 end
 
-# Convert any input string (binary, hex, ascii) to array of bytes
-def input_to_bytes(input, type)
+# Convert input (hex, ascii) to array of bytes
+def bytes(input, type)
   case type
   when "binary"
-    # trim 0b prefix
-    bin = input[2..-1]
-    # check it's a valid binary string
-    if bin =~ /[^0-1]/ # only 1s and 0s
-      puts "Invalid binary string: #{input}"
-      exit
+    bin = input[2..-1] # trim 0b prefix
+    if (bin.size % 8 == 0) # if we have been given a bitstring that makes up an exact number of bytes (8 bits in a byte)
+      bytes = bin.scan(/.{8}/).map {|byte| byte.to_i(2)} # convert the bits to array of bytes (in decimal)
+    else
+      bytes = "(bitstring is not an exact amount of bytes)" # helpful note
     end
-    # convert binary string to bytes
-    bytes = [bin.to_i(2).to_s(16)].pack("H*").unpack("C*") # I don't know how to pack and unpack this cleanly
   when "hex"
-    # trim 0x prefix
-    hex = input[2..-1]
-    # check it's a valid hex string
-    if hex !~ /^[0-9A-F]+$/i # only hex chars (case-insensitive)
-      puts "Invalid hex string: #{input}"
-      exit
-    end
-    # convert hex string to bytes
-    bytes = [hex].pack("H*").unpack("C*")
+    hex = input[2..-1] # trim 0x prefix
+    bytes = [hex].pack("H*").unpack("C*") # convert hex string to bytes
   else
-    # convert ASCII string to bytes
-    bytes = input.bytes
+    bytes = input.bytes # convert ASCII string to bytes
   end
 
   return bytes
@@ -118,9 +117,9 @@ end
 
 # Rotate right (circular right shift)
 def rotr(n, x)
-  right = (x >> n)            # right shift
-  left = (x << 32 - n)         # left shift
-  result = right | left       # combine to create rotation effect
+  right = (x >> n)              # right shift
+  left = (x << 32 - n)          # left shift
+  result = right | left         # combine to create rotation effect
   return result & (2 ** 32 - 1) # use mask to truncate result to 32 bits
 end
 

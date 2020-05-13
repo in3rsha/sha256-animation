@@ -8,14 +8,19 @@ if !defined? $input
   $input = ARGV[0] || "abc"    # "string"|"0xaabbcc"|"0b10110100"
   $delay = ARGV[1] || "normal" # [enter|normal|fast|nodelay]
 
-  # Detect Input Type (binary, hex, or string)
+  # Detect input type (binary, hex, or string)
   $type = input_type($input)
 
-  # Convert Input To Bytes
-  $bytes = input_to_bytes($input, $type)
+  # Convert input to bytes (if possible)
+  $bytes = bytes($input, $type)
 
-  # Set message (raw bytes of input data as a binary string)
-  $message = $bytes.map { |x| x.to_s(2).rjust(8, "0") }.join
+  # Set message (binary representation of data)
+  if $type == "string" || $type == "hex"
+    $message = $bytes.map { |x| x.to_s(2).rjust(8, "0") }.join # convert bytes to binary string
+  end
+  if $type == "binary"
+    $message = $input[2..-1] # input is already in binary, so just trim the leading 0b from the input
+  end
 
   # Note about hitting enter to step
   if $delay == "enter"
