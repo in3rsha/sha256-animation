@@ -21,7 +21,7 @@ end
 
 # Convert hex to bytes
 $type = input_type($input)
-$bytes = input_to_bytes($input, $type)
+$bytes = bytes($input, $type)
 $message = $bytes.map { |x| x.to_s(2).rjust(8, "0") }.join
 
 # Note about hitting enter to step
@@ -41,7 +41,7 @@ load "sha256.rb"
 # 2. Use output of first hash as input to second hash
 $input = "0x" + $digest # prepend 0x to show that it's hex bytes
 $type = input_type($input)
-$bytes = input_to_bytes($input, $type)
+$bytes = bytes($input, $type)
 $message = $bytes.map { |x| x.to_s(2).rjust(8, "0") }.join
 
 # 2. Second Hash
