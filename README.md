@@ -2,7 +2,7 @@
 
 An animation of the [SHA-256](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.180-4.pdf) hash function in your terminal.
 
-I used this code to help me make a video to explain [how SHA-256 works](https://www.youtube.com/watch?v=f9EbD6iY9zI).
+Video: <https://www.youtube.com/watch?v=f9EbD6iY9zI>
 
 ![](images/sha256.gif)
 
