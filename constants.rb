@@ -48,6 +48,8 @@ primes.each do |prime|
   #
   #  Hex:  428a2f98
   #
+  # In other words, you multiply the fractional part by 2^32, floor it, then convert to hexadecimal.
+  #
   hex = ""
   8.times do # 32 bits = 8 hex characters
     product = fractional * 16 # multiply fraction by 16
