@@ -18,6 +18,9 @@ ruby sha256.rb abc
 ruby sha256.rb 0b01100001
 ruby sha256.rb 0xaabbccdd
 
+# hash a file (be aware that files will have a newline character at the end)
+ruby sha256.rb file.txt
+
 # speed up or step through the animation (optional)
 ruby sha256.rb abc normal # default
 ruby sha256.rb abc fast
