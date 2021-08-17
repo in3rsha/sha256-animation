@@ -11,11 +11,16 @@ if !defined? $input
   # Detect input type (binary, hex, or string)
   $type = input_type($input)
 
+  # Read file if file is given
+  if $type == "file"
+    $input = File.read($input)
+  end
+
   # Convert input to bytes (if possible)
   $bytes = bytes($input, $type)
 
   # Set message (binary representation of data)
-  if $type == "string" || $type == "hex"
+  if $type == "string" || $type == "file" || $type == "hex"
     $message = $bytes.map { |x| x.to_s(2).rjust(8, "0") }.join # convert bytes to binary string
   end
   if $type == "binary"

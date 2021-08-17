@@ -65,24 +65,29 @@ end
 
 # Detect input type base on prefix (i.e. binary, hex, or otherwise just a string)
 def input_type(input)
-  # Check for hex or binary prefix
-  case input[0..1]
-  when "0b"
-    # check it's a valid binary string
-    if input[2..-1] =~ /[^0-1]/ # only 1s and 0s
-      puts "Invalid binary string: #{input}"
-      exit
-    end
-    return "binary"
-  when "0x"
-    # check it's a valid hex string
-    if input[2..-1] !~ /^[0-9A-F]+$/i # only hex chars (case-insensitive)
-      puts "Invalid hex string: #{input}"
-      exit
-    end
-    return "hex"
+  # Check if input is referencing a file
+  if(File.file?(input))
+  	return "file"
   else
-    return "string"
+	  # Check for hex or binary prefix
+	  case input[0..1]
+	  when "0b"
+		# check it's a valid binary string
+		if input[2..-1] =~ /[^0-1]/ # only 1s and 0s
+		  puts "Invalid binary string: #{input}"
+		  exit
+		end
+		return "binary"
+	  when "0x"
+		# check it's a valid hex string
+		if input[2..-1] !~ /^[0-9A-F]+$/i # only hex chars (case-insensitive)
+		  puts "Invalid hex string: #{input}"
+		  exit
+		end
+		return "hex"
+	  else
+		return "string"
+	  end
   end
 end
 
