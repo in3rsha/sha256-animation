@@ -344,7 +344,7 @@ The final hash value is just the _concatenation_ of these eight 32-bit values to
 
 ### Footnotes
 
-<small><em><a id="security">1</a>: Cryptography For Developers, Simon Johnson (pg. 218)</em></small>
+<small><em><a id="security">1</a>: Cryptography For Developers, Simon Johnson (pg. 218)</em></small> 
 
 
 
