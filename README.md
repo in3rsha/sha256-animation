@@ -40,7 +40,7 @@ ruby ch.rb 11111111111111110000000000000000 11110000111100001111000011110000 000
 ruby maj.rb 11111111111111110000000000000000 11110000111100001111000011110000 00000000000000001111111111111111
 ```
 
-You can do double-SHA256 (e.g. [Bitcoin](https://learnmeabitcoin.com)) by using `hash256.rb`. This script accepts _hex data_ (e.g. [block headers](https://learnmeabitcoin.com/guide/block-header), [transaction data](https://learnmeabitcoin.com/guide/transaction-data)) by default.
+You can do double-SHA256 (e.g. [Bitcoin](https://learnmeabitcoin.com)) by using `hash256.rb`. This script accepts _hex data_ (e.g. [block headers](https://learnmeabitcoin.com/technical/block/#header), [transaction data](https://learnmeabitcoin.com/technical/transaction/)) by default.
 
 ```
 ruby hash256.rb 0100000000000000000000000000000000000000000000000000000000000000000000003ba3edfd7a7b12b27ac72c3e67768f617fc81bc3888a51323a9fb8aa4b1e5e4a29ab5f49ffff001d1dac2b7c # genesis block header
